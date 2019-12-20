@@ -1,0 +1,39 @@
+{% extends "list_book/base.html" %}
+
+
+{% block content %}
+    <table class="table" >
+        <thead>
+            <tr>
+            <th scope="col" class="align-middle">Title</th>
+            <th scope="col" class="align-middle">Author</th>
+            <th scope="col" class="align-middle">Date Published</th>
+            <th scope="col" class="align-middle">Total Pages</th>
+            <th scope="col" class="align-middle">Type</th>
+            <th scope="col" class="align-middle">
+                <a href="{% url 'book_append' %}" class="btn btn-primary btn-block"><i class="fas fa-plus-circle"></i> Add Book</a>
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in list %}
+                <tr>
+                    <td class="align-middle">{{book.title}}</td>
+                    <td class="align-middle">{{book.author}}</td>
+                    <td class="align-middle">{{book.date_published}}</td>
+                    <td class="align-middle">{{book.number_of_pages}}</td>
+                    <td class="align-middle">{{book.type_of_book}}</td>
+                    <td class="align-middle" style="text-align:center;">
+                        <a href="{% url 'book_update' book.id %}" class="btn text-secondary">
+                            <button type="button" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Edit</button>
+                        </a>
+                        <form action="{% url 'book_delete' book.id %}" method="post"class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i> Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
