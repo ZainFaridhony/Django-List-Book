@@ -33,3 +33,4 @@ python manage.py runserver
 ```
 
 
+![Image description](1.png)
