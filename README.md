@@ -34,3 +34,4 @@ python manage.py runserver
 
 
 ![Image description](1.png)
+![Image description](2.png)
